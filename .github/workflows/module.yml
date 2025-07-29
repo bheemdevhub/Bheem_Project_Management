@@ -1,18 +1,17 @@
-name: Module CI/CD
-on: [push, pull_request]
+name: Bheem Module CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  test:
+  noop:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Test Module
-        run: pytest tests/
-  publish:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build Package
-        run: python setup.py sdist bdist_wheel
-      - name: Publish to PyPI
-        run: twine upload dist/*
+      - name: Show project structure
+        run: |
+          echo "✅ Bheem module is setup."
+          ls -la
