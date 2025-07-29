@@ -1,0 +1,18 @@
+name: Module CI/CD
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test Module
+        run: pytest tests/
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Package
+        run: python setup.py sdist bdist_wheel
+      - name: Publish to PyPI
+        run: twine upload dist/*
