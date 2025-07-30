@@ -1,14 +1,14 @@
 
 from fastapi import APIRouter, Depends, HTTPException, status, Query
-from app.modules.auth.core.services.permissions_service import require_roles, require_api_permission
+from bheem_core.modules.auth.core.services.permissions_service import require_roles, require_api_permission
 from typing import List, Optional
 from sqlalchemy.orm import Session
-from app.core.database import get_db
+from bheem_core.core.database import get_db
 from uuid import UUID
-from app.modules.project_management.api.v1.routes.project_phases import router as project_phases_router
-from app.modules.auth.core.services.permissions_service import get_current_user, require_api_permission
-from app.modules.auth.core.models.auth_models import User
-from app.modules.project_management.core.schemas.project_schemas import (
+from bheem_core.modules.project_management.api.v1.routes.project_phases import router as project_phases_router
+from bheem_core.modules.auth.core.services.permissions_service import get_current_user, require_api_permission
+from bheem_core.modules.auth.core.models.auth_models import User
+from bheem_core.modules.project_management.core.schemas.project_schemas import (
     ProjectCreate,
     ProjectUpdate,
     ProjectResponse,
@@ -17,15 +17,15 @@ from app.modules.project_management.core.schemas.project_schemas import (
     ProjectFilters,
     PaginationParams
 )
-from app.modules.project_management.core.service import ProjectManagementService
-from app.modules.project_management.core.services.project_activity_service import ProjectActivityService
-from app.modules.project_management.core.schemas.project_activity_schemas import (
+from bheem_core.modules.project_management.core.service import ProjectManagementService
+from bheem_core.modules.project_management.core.services.project_activity_service import ProjectActivityService
+from bheem_core.modules.project_management.core.schemas.project_activity_schemas import (
     ProjectActivityCreate, ProjectActivityOut,
     ProjectFinancialDocumentCreate, ProjectFinancialDocumentOut,
     ProjectRatingCreate, ProjectRatingOut,
     ProjectTagCreate, ProjectTagOut
 )
-from app.core.event_bus import EventBus
+from bheem_core.core.event_bus import EventBus
 
 router = APIRouter(prefix="/project-management/projects", tags=["Project Management - Projects"])
 router.include_router(project_phases_router)
@@ -431,3 +431,4 @@ async def get_project_health(
     
     health_metrics = service.get_project_health(project_id)
     return health_metrics
+

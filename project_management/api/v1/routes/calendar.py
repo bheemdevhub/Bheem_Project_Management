@@ -4,9 +4,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List, Optional
 from datetime import datetime, date
 from sqlalchemy.orm import Session
-from app.core.database import get_db
-from app.modules.auth.core.services.permissions_service import get_current_user
-from app.modules.auth.core.models.auth_models import User
+from bheem_core.core.database import get_db
+from bheem_core.modules.auth.core.services.permissions_service import get_current_user
+from bheem_core.modules.auth.core.models.auth_models import User
 
 router = APIRouter(prefix="/project-management/calendar", tags=["Project Management - Calendar"])
 
@@ -210,3 +210,4 @@ async def respond_to_event(
     """
     # Implementation would go here
     return {"message": f"Respond to event {event_id}", "user": current_user.id}
+

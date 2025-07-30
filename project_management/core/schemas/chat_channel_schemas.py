@@ -50,3 +50,4 @@ class ChatChannelFilterParams(BaseModel):
     is_private: Optional[bool]
     is_archived: Optional[bool]
     name: Optional[str]
+

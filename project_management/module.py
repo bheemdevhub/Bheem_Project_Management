@@ -510,3 +510,4 @@ class ProjectManagementModule(BaseERPModule):
                 "background_tasks": True,
             }
         }
+

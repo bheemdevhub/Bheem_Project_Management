@@ -1,7 +1,7 @@
 """
 Event system for ChatChannel lifecycle
 """
-from app.modules.project_management.core.models.project_models import ChatChannel
+from bheem_core.modules.project_management.core.models.project_models import ChatChannel
 from uuid import UUID
 import logging
 
@@ -22,3 +22,4 @@ async def channel_deleted(channel: ChatChannel, deleted_by: UUID):
 async def channel_archived(channel: ChatChannel, archived_by: UUID):
     logger.info(f"Channel archived: {channel.id} by {archived_by}")
     # Add event bus publishing, notification, websocket, etc.
+

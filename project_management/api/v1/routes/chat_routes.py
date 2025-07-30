@@ -9,13 +9,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from uuid import UUID
 import logging
 
-from app.core.database import get_db
-from app.modules.auth.core.services.permissions_service import (
+from bheem_core.core.database import get_db
+from bheem_core.modules.auth.core.services.permissions_service import (
     require_roles, require_api_permission, get_current_user_id, get_current_company_id
 )
-from app.shared.models import UserRole
-from app.modules.project_management.core.services.chat_service import ChatService
-from app.modules.project_management.core.schemas.chat_schemas import (
+from bheem_core.shared.models import UserRole
+from bheem_core.modules.project_management.core.services.chat_service import ChatService
+from bheem_core.modules.project_management.core.schemas.chat_schemas import (
     # Channel schemas
     ChatChannelCreate, ChatChannelUpdate, ChatChannelResponse, 
     ChatChannelDetailResponse, ChatChannelPaginatedResponse, ChatChannelFilterParams,
@@ -886,3 +886,4 @@ async def websocket_endpoint(
     except Exception as e:
         logger.error(f"WebSocket error for user {user_id}: {str(e)}")
         await websocket.close()
+

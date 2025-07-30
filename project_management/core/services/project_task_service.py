@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from uuid import UUID
-from app.modules.project_management.core.models.project_models import Task
-from app.core.event_bus import EventBus
-from app.modules.project_management.core.schemas.project_task_schemas import TaskCreate, TaskUpdate
+from bheem_core.modules.project_management.core.models.project_models import Task
+from bheem_core.core.event_bus import EventBus
+from bheem_core.modules.project_management.core.schemas.project_task_schemas import TaskCreate, TaskUpdate
 
 class TaskService:
     def __init__(self, db: Session, event_bus: EventBus):
@@ -49,3 +49,4 @@ class TaskService:
 
     def list_tasks(self, project_id: UUID):
         return self.db.query(Task).filter(Task.project_id == project_id).all()
+

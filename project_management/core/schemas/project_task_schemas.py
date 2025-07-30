@@ -34,3 +34,4 @@ class TaskOut(TaskBase):
     created_at: datetime
     class Config:
         orm_mode = True
+

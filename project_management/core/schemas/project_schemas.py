@@ -3,7 +3,7 @@ from typing import List, Optional, Dict, Any, Union
 from datetime import datetime, date
 from decimal import Decimal
 from uuid import UUID
-from app.modules.project_management.config import ProjectStatus, TaskStatus, Priority, CalendarEventTypes, NotificationTypes
+from bheem_core.modules.project_management.config import ProjectStatus, TaskStatus, Priority, CalendarEventTypes, NotificationTypes
 
 # Base schemas
 class BaseSchema(BaseModel):
@@ -598,3 +598,4 @@ class ExportResponse(BaseSchema):
     generated_at: datetime
     download_url: Optional[str] = None
     expires_at: Optional[datetime] = None
+

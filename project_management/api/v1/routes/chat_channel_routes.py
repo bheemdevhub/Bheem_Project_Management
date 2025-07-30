@@ -5,13 +5,13 @@ from typing import List, Optional, Dict, Any
 from fastapi import APIRouter, Depends, HTTPException, Query, Path, Body, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from uuid import UUID
-from app.core.database import get_db
-from app.modules.auth.core.services.permissions_service import (
+from bheem_core.core.database import get_db
+from bheem_core.modules.auth.core.services.permissions_service import (
     require_roles, require_api_permission, get_current_user_id, get_current_company_id
 )
-from app.shared.models import UserRole
-from app.modules.project_management.core.services.chat_channel_service import ChatChannelService
-from app.modules.project_management.core.schemas.chat_channel_schemas import (
+from bheem_core.shared.models import UserRole
+from bheem_core.modules.project_management.core.services.chat_channel_service import ChatChannelService
+from bheem_core.modules.project_management.core.schemas.chat_channel_schemas import (
     ChatChannelCreate, ChatChannelUpdate, ChatChannelResponse, ChatChannelDetailResponse,
     ChatChannelPaginatedResponse, ChatChannelFilterParams
 )
@@ -135,3 +135,4 @@ async def delete_chat_channel(
     if not success:
         raise HTTPException(status_code=404, detail="Channel not found")
     return {"message": "Channel deleted" if hard_delete else "Channel archived", "channel_id": str(channel_id)}
+

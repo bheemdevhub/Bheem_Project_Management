@@ -722,3 +722,4 @@ class ChatEventFactory:
 
 # Global event dispatcher instance
 chat_event_dispatcher = ChatEventDispatcher()
+

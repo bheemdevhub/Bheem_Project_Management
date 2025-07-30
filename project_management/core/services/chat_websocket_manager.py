@@ -11,7 +11,7 @@ import logging
 import asyncio
 from datetime import datetime
 
-from app.modules.project_management.core.schemas.enhanced_chat_schemas import (
+from bheem_core.modules.project_management.core.schemas.enhanced_chat_schemas import (
     WebSocketMessage, TypingIndicator, OnlineStatusBroadcast
 )
 
@@ -403,3 +403,4 @@ async def typing_cleanup_task():
 
 # Start the cleanup task when the module is imported
 # asyncio.create_task(typing_cleanup_task())
+

@@ -5,11 +5,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.exc import NoResultFound
 from fastapi import HTTPException
-from app.modules.project_management.core.models.project_models import ProjectPhase
-from app.modules.project_management.core.schemas.project_phase_schemas import (
+from bheem_core.modules.project_management.core.models.project_models import ProjectPhase
+from bheem_core.modules.project_management.core.schemas.project_phase_schemas import (
     ProjectPhaseCreate, ProjectPhaseUpdate
 )
-from app.core.event_bus import EventBus
+from bheem_core.core.event_bus import EventBus
 
 class ProjectPhaseService:
     def __init__(self, db: AsyncSession, event_bus: Optional[EventBus] = None):
@@ -53,3 +53,4 @@ class ProjectPhaseService:
         if self.event_bus:
             await self.event_bus.publish("PHASE_DELETED", {"phase_id": str(phase_id)})
         return None
+

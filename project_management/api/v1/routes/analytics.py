@@ -4,9 +4,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List, Optional
 from datetime import date, datetime
 from sqlalchemy.orm import Session
-from app.core.database import get_db
-from app.modules.auth.core.services.permissions_service import get_current_user
-from app.modules.auth.core.models.auth_models import User
+from bheem_core.core.database import get_db
+from bheem_core.modules.auth.core.services.permissions_service import get_current_user
+from bheem_core.modules.auth.core.models.auth_models import User
 
 router = APIRouter(prefix="/project-management/analytics", tags=["Project Management - Analytics"])
 
@@ -236,3 +236,4 @@ async def export_analytics_report(
     """
     # Implementation would go here
     return {"message": f"Export {report_type} report in {format} format", "user": current_user.id}
+

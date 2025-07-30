@@ -7,11 +7,11 @@ from uuid import UUID
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy import update, delete, func
-from app.modules.project_management.core.models.project_models import ChatChannel
-from app.modules.project_management.core.schemas.chat_channel_schemas import (
+from bheem_core.modules.project_management.core.models.project_models import ChatChannel
+from bheem_core.modules.project_management.core.schemas.chat_channel_schemas import (
     ChatChannelCreate, ChatChannelUpdate, ChatChannelFilterParams
 )
-from app.modules.project_management.core.events import chat_channel_events
+from bheem_core.modules.project_management.core.events import chat_channel_events
 from fastapi import HTTPException, status
 
 class ChatChannelService:
@@ -79,3 +79,4 @@ class ChatChannelService:
             await self.db.commit()
             await chat_channel_events.channel_archived(channel, deleted_by)
         return True
+

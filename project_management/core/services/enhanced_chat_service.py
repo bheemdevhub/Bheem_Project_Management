@@ -13,11 +13,11 @@ from uuid import UUID
 import logging
 import json
 
-from app.modules.project_management.core.models.project_models import (
+from bheem_core.modules.project_management.core.models.project_models import (
     ChatChannel, ChatMember, ChatMessage, MessageReaction, 
     DirectMessage, OnlineStatus
 )
-from app.modules.project_management.core.schemas.enhanced_chat_schemas import (
+from bheem_core.modules.project_management.core.schemas.enhanced_chat_schemas import (
     # Channel schemas
     ChatChannelCreate, ChatChannelUpdate, ChatChannelFilterParams,
     # Member schemas
@@ -35,7 +35,7 @@ from app.modules.project_management.core.schemas.enhanced_chat_schemas import (
     # Search schemas
     MessageSearchRequest
 )
-from app.modules.project_management.events.enhanced_chat_events import (
+from bheem_core.modules.project_management.events.enhanced_chat_events import (
     ChatEventDispatcher, ChannelCreatedEvent, ChannelUpdatedEvent, ChannelDeletedEvent,
     MemberJoinedEvent, MemberLeftEvent, MemberRoleChangedEvent,
     MessageSentEvent, MessageUpdatedEvent, MessageDeletedEvent,
@@ -1429,3 +1429,4 @@ class EnhancedChatService:
                 seen_ids.add(channel.id)
         
         return unique_channels
+

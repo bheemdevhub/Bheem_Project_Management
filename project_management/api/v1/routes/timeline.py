@@ -2,12 +2,12 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List
 from sqlalchemy.orm import Session
-from app.core.database import get_db
-from app.modules.auth.core.services.permissions_service import get_current_user, require_api_permission, require_roles
-from app.modules.auth.core.models.auth_models import User
-from app.modules.project_management.core.schemas import ProjectPhaseCreate, ProjectPhaseUpdate, ProjectPhaseResponse
-from app.modules.project_management.core.service import ProjectManagementService
-from app.core.event_bus import EventBus
+from bheem_core.core.database import get_db
+from bheem_core.modules.auth.core.services.permissions_service import get_current_user, require_api_permission, require_roles
+from bheem_core.modules.auth.core.models.auth_models import User
+from bheem_core.modules.project_management.core.schemas import ProjectPhaseCreate, ProjectPhaseUpdate, ProjectPhaseResponse
+from bheem_core.modules.project_management.core.service import ProjectManagementService
+from bheem_core.core.event_bus import EventBus
 
 router = APIRouter(prefix="/project-management/timeline", tags=["Project Management - Timeline"])
 
@@ -145,3 +145,4 @@ async def delete_project_phase(
     if not deleted:
         raise HTTPException(status_code=404, detail="Project phase not found or already deleted")
     return None
+

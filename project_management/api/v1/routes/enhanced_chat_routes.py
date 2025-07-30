@@ -12,14 +12,14 @@ import logging
 import asyncio
 from datetime import datetime, timedelta
 
-from app.core.database import get_db
-from app.modules.auth.core.services.permissions_service import (
+from bheem_core.core.database import get_db
+from bheem_core.modules.auth.core.services.permissions_service import (
     require_roles, require_api_permission, get_current_user_id, get_current_company_id
 )
-from app.shared.models import UserRole
-from app.modules.project_management.core.services.enhanced_chat_service import EnhancedChatService
-from app.modules.project_management.core.services.chat_websocket_manager import chat_websocket_manager
-from app.modules.project_management.core.schemas.enhanced_chat_schemas import (
+from bheem_core.shared.models import UserRole
+from bheem_core.modules.project_management.core.services.enhanced_chat_service import EnhancedChatService
+from bheem_core.modules.project_management.core.services.chat_websocket_manager import chat_websocket_manager
+from bheem_core.modules.project_management.core.schemas.enhanced_chat_schemas import (
     # Channel schemas
     ChatChannelCreate, ChatChannelUpdate, ChatChannelResponse, 
     ChatChannelDetailResponse, ChatChannelPaginatedResponse, ChatChannelFilterParams,
@@ -1770,3 +1770,4 @@ async def get_channel_online_users(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Failed to get channel online users"
         )
+

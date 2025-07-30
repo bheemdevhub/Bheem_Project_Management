@@ -9,15 +9,15 @@ import enum
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import expression
-from app.core.database import Base
-from app.core.database import Base, TimestampMixin
-from app.shared.models import AuditMixin
-from app.shared.models import SoftDeleteMixin
+from bheem_core.core.database import Base
+from bheem_core.core.database import Base, TimestampMixin
+from bheem_core.shared.models import AuditMixin
+from bheem_core.shared.models import SoftDeleteMixin
 from ...config import ProjectStatus, Priority
 from ...config import ProjectStatus, TaskStatus, Priority, CalendarEventTypes, NotificationTypes
 from sqlalchemy import and_
 from sqlalchemy.orm import foreign
-from app.shared.models import Activity, FinancialDocument, Rating, Tag
+from bheem_core.shared.models import Activity, FinancialDocument, Rating, Tag
 
 
 SCHEMA = "project_management"
@@ -92,7 +92,7 @@ class Project(Base, TimestampMixin, AuditMixin, SoftDeleteMixin):
     # ------------------------------
 
     def get_activities(self):
-        from app.shared.models import Activity
+        from bheem_core.shared.models import Activity
         session = object_session(self)
         return session.query(Activity).filter(
             Activity.entity_type == EntityTypes.PROJECT,
@@ -101,7 +101,7 @@ class Project(Base, TimestampMixin, AuditMixin, SoftDeleteMixin):
         ).all()
 
     def add_activity(self, activity_type, subject, description=None, assigned_to=None, scheduled_date=None, **kwargs):
-        from app.shared.models import Activity
+        from bheem_core.shared.models import Activity
         session = object_session(self)
         activity = Activity(
             entity_type=EntityTypes.PROJECT,
@@ -118,7 +118,7 @@ class Project(Base, TimestampMixin, AuditMixin, SoftDeleteMixin):
         return activity
 
     def get_financial_documents(self):
-        from app.shared.models import FinancialDocument
+        from bheem_core.shared.models import FinancialDocument
         session = object_session(self)
         return session.query(FinancialDocument).filter(
             FinancialDocument.party_type == EntityTypes.PROJECT,
@@ -127,7 +127,7 @@ class Project(Base, TimestampMixin, AuditMixin, SoftDeleteMixin):
         ).all()
 
     def add_financial_document(self, document_type, document_number, total_amount, **kwargs):
-        from app.shared.models import FinancialDocument
+        from bheem_core.shared.models import FinancialDocument
         session = object_session(self)
         document = FinancialDocument(
             party_type=EntityTypes.PROJECT,
@@ -142,7 +142,7 @@ class Project(Base, TimestampMixin, AuditMixin, SoftDeleteMixin):
         return document
 
     def get_ratings(self):
-        from app.shared.models import Rating
+        from bheem_core.shared.models import Rating
         session = object_session(self)
         return session.query(Rating).filter(
             Rating.entity_type == EntityTypes.PROJECT,
@@ -151,7 +151,7 @@ class Project(Base, TimestampMixin, AuditMixin, SoftDeleteMixin):
         ).all()
 
     def add_rating(self, rating_type, rating_value, rated_by=None, comments=None, **kwargs):
-        from app.shared.models import Rating
+        from bheem_core.shared.models import Rating
         session = object_session(self)
         rating = Rating(
             entity_type=EntityTypes.PROJECT,
@@ -167,7 +167,7 @@ class Project(Base, TimestampMixin, AuditMixin, SoftDeleteMixin):
         return rating
 
     def get_tags(self):
-        from app.shared.models import Tag
+        from bheem_core.shared.models import Tag
         session = object_session(self)
         return session.query(Tag).filter(
             Tag.entity_type == EntityTypes.PROJECT,
@@ -176,7 +176,7 @@ class Project(Base, TimestampMixin, AuditMixin, SoftDeleteMixin):
         ).all()
 
     def add_tag(self, tag_category, tag_value, applied_by=None, tag_color=None, **kwargs):
-        from app.shared.models import Tag
+        from bheem_core.shared.models import Tag
         session = object_session(self)
         tag = Tag(
             entity_type=EntityTypes.PROJECT,
@@ -241,7 +241,7 @@ class Task(Base, TimestampMixin, AuditMixin, SoftDeleteMixin):
     # ======================
 
     def get_activities(self):
-        from app.shared.models import Activity
+        from bheem_core.shared.models import Activity
         from sqlalchemy.orm import object_session
         session = object_session(self)
         return session.query(Activity).filter(
@@ -251,7 +251,7 @@ class Task(Base, TimestampMixin, AuditMixin, SoftDeleteMixin):
         ).all()
 
     def add_activity(self, activity_type, subject, description=None, assigned_to=None, scheduled_date=None, **kwargs):
-        from app.shared.models import Activity
+        from bheem_core.shared.models import Activity
         from sqlalchemy.orm import object_session
         session = object_session(self)
 
@@ -272,7 +272,7 @@ class Task(Base, TimestampMixin, AuditMixin, SoftDeleteMixin):
         return activity
 
     def get_tags(self):
-        from app.shared.models import Tag
+        from bheem_core.shared.models import Tag
         from sqlalchemy.orm import object_session
         session = object_session(self)
         return session.query(Tag).filter(
@@ -282,7 +282,7 @@ class Task(Base, TimestampMixin, AuditMixin, SoftDeleteMixin):
         ).all()
 
     def add_tag(self, tag_category, tag_value, applied_by=None, tag_color=None, **kwargs):
-        from app.shared.models import Tag
+        from bheem_core.shared.models import Tag
         from sqlalchemy.orm import object_session
         session = object_session(self)
 

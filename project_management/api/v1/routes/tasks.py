@@ -2,16 +2,16 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List, Optional
 from sqlalchemy.orm import Session
-from app.core.database import get_db
-from app.modules.auth.core.services.permissions_service import get_current_user, require_api_permission
-from app.modules.auth.core.models.auth_models import User
+from bheem_core.core.database import get_db
+from bheem_core.modules.auth.core.services.permissions_service import get_current_user, require_api_permission
+from bheem_core.modules.auth.core.models.auth_models import User
 
-from app.modules.project_management.core.services.project_task_service import TaskService
-from app.modules.project_management.core.schemas import TaskCreate, TaskUpdate, TaskOut, TaskAssignment, TaskResponse
-from app.modules.project_management.core.service import ProjectManagementService
+from bheem_core.modules.project_management.core.services.project_task_service import TaskService
+from bheem_core.modules.project_management.core.schemas import TaskCreate, TaskUpdate, TaskOut, TaskAssignment, TaskResponse
+from bheem_core.modules.project_management.core.service import ProjectManagementService
 
-from app.core.event_bus import EventBus
-from app.modules.auth.core.services.permissions_service import require_roles, require_api_permission
+from bheem_core.core.event_bus import EventBus
+from bheem_core.modules.auth.core.services.permissions_service import require_roles, require_api_permission
 
 def get_service(db=Depends(get_db)):
     return ProjectManagementService(db, event_bus=EventBus())
@@ -111,3 +111,4 @@ async def delete_task(
     if not deleted:
         raise HTTPException(status_code=404, detail="Task not found")
     return None
+

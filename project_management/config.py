@@ -246,3 +246,4 @@ API_ENDPOINTS = {
         "WS /project-management/chat/ws",
     ]
 }
+

@@ -38,3 +38,4 @@ def upgrade():
 def downgrade():
     """Drop project management tables"""
     pass
+

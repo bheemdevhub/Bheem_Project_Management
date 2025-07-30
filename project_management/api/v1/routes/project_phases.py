@@ -1,13 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from typing import List
 from uuid import UUID
-from app.modules.project_management.core.schemas.project_phase_schemas import (
+from bheem_core.modules.project_management.core.schemas.project_phase_schemas import (
     ProjectPhaseCreate, ProjectPhaseUpdate, ProjectPhaseResponse
 )
-from app.modules.project_management.core.services.project_phase_service import ProjectPhaseService
-from app.core.database import get_db
-from app.core.event_bus import EventBus
-from app.modules.auth.core.services.permissions_service import (
+from bheem_core.modules.project_management.core.services.project_phase_service import ProjectPhaseService
+from bheem_core.core.database import get_db
+from bheem_core.core.event_bus import EventBus
+from bheem_core.modules.auth.core.services.permissions_service import (
     require_roles, require_api_permission, get_current_user
 )
 
@@ -54,3 +54,4 @@ async def delete_phase(phase_id: UUID, service: ProjectPhaseService = Depends(ge
     if not deleted:
         raise HTTPException(status_code=404, detail="Project phase not found")
     return None
+

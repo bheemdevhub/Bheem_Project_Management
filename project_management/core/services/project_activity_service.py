@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from uuid import UUID
-from app.modules.project_management.core.models.project_models import Project
-from app.core.event_bus import EventBus
+from bheem_core.modules.project_management.core.models.project_models import Project
+from bheem_core.core.event_bus import EventBus
 
 class ProjectActivityService:
     def __init__(self, db: Session, event_bus: EventBus):
@@ -67,3 +67,4 @@ class ProjectActivityService:
     def get_tags(self, project_id: UUID):
         project = self.db.query(Project).get(project_id)
         return project.get_tags()
+

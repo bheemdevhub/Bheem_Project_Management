@@ -111,3 +111,4 @@ class ProjectManagementEventHandlers:
         # Update project financial constraints
         # Enable resource allocation
         # Start project execution phase
+

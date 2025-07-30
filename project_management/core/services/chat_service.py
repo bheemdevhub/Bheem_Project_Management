@@ -12,11 +12,11 @@ from datetime import datetime, timedelta
 from uuid import UUID
 import logging
 
-from app.modules.project_management.core.models.project_models import (
+from bheem_core.modules.project_management.core.models.project_models import (
     ChatChannel, ChatMember, ChatMessage, MessageReaction, 
     DirectMessage, OnlineStatus
 )
-from app.modules.project_management.core.schemas.chat_schemas import (
+from bheem_core.modules.project_management.core.schemas.chat_schemas import (
     ChatChannelCreate, ChatChannelUpdate, ChatChannelFilterParams,
     ChatMemberCreate, ChatMemberUpdate,
     ChatMessageCreate, ChatMessageUpdate, ChatMessageFilterParams,
@@ -25,7 +25,7 @@ from app.modules.project_management.core.schemas.chat_schemas import (
     OnlineStatusUpdate,
     BulkMemberAddRequest, BulkMemberRemoveRequest
 )
-from app.modules.project_management.events.chat_events import (
+from bheem_core.modules.project_management.events.chat_events import (
     ChatEventDispatcher, ChannelCreatedEvent, MessageSentEvent,
     MemberJoinedEvent, ReactionAddedEvent
 )
@@ -927,3 +927,4 @@ class ChatService:
         except Exception as e:
             logger.error(f"Error updating last seen for user {user_id}: {str(e)}")
             # Don't raise here as this is a background operation
+

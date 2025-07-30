@@ -15,7 +15,7 @@ class ProjectService:
     async def get_all_tasks(self, project_id: str = None) -> list:
         """Get all tasks, optionally filtered by project_id."""
         from sqlalchemy import select
-        from app.modules.project_management.core.models.project_models import Task
+        from bheem_core.modules.project_management.core.models.project_models import Task
         stmt = select(Task)
         if project_id:
             stmt = stmt.where(Task.project_id == project_id)
@@ -67,8 +67,8 @@ class ProjectService:
         from datetime import datetime
         from datetime import datetime
         from decimal import Decimal
-        from app.modules.project_management.config import ProjectStatus, Priority
-        from app.modules.project_management.core.schemas.project_schemas import ProjectResponse
+        from bheem_core.modules.project_management.config import ProjectStatus, Priority
+        from bheem_core.modules.project_management.core.schemas.project_schemas import ProjectResponse
         now = datetime.utcnow().replace(tzinfo=None)
         data = project_in.dict(exclude_unset=True)
         def ensure_uuid(val):
@@ -169,7 +169,7 @@ class ProjectService:
         import uuid
         from datetime import datetime
         from decimal import Decimal
-        from app.modules.project_management.config import ProjectStatus, Priority
+        from bheem_core.modules.project_management.config import ProjectStatus, Priority
         now = datetime.utcnow()
     async def update_project(self, project_id: UUID, update_data: dict) -> Optional[dict]:
         """Update an existing project and publish event"""
@@ -201,8 +201,8 @@ class ProjectService:
             task_dict = dict(task_data)
         logger.info(f"Creating task: {task_dict.get('title', 'Unknown')}")
         # Import Task model here to avoid circular import
-        from app.modules.project_management.core.models.project_models import Task
-        from app.modules.project_management.core.schemas.project_task_schemas import TaskOut
+        from bheem_core.modules.project_management.core.models.project_models import Task
+        from bheem_core.modules.project_management.core.schemas.project_task_schemas import TaskOut
         import uuid
         from datetime import datetime
 
@@ -587,3 +587,4 @@ class ProjectService:
 
 # Alias for compatibility with routes expecting ProjectManagementService
 ProjectManagementService = ProjectService
+

@@ -37,3 +37,4 @@ class ProjectPhaseResponse(ProjectPhaseBase):
     project_id: UUID
     class Config:
         orm_mode = True
+

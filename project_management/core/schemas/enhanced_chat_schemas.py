@@ -449,3 +449,4 @@ class MessageSearchResponse(BaseModel):
 # Update forward references
 ChatChannelDetailResponse.model_rebuild()
 ChatMessageDetailResponse.model_rebuild()
+

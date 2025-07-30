@@ -196,3 +196,4 @@ TASK_SCHEDULE = {
         "function": ProjectManagementTasks.optimize_resource_allocation
     }
 }
+
