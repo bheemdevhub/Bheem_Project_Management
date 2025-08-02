@@ -1,1 +1,64 @@
 # Add module-specific dependencies here
+# Add module-specific dependencies here
+# Add module-specific dependencies here
+# Core dependencies
+alembic==1.13.1
+annotated-types==0.7.0
+anyio==3.7.1
+asyncpg==0.30.0
+bcrypt==4.3.0
+certifi==2025.7.14
+cffi==1.17.1
+click==8.2.1
+colorama==0.4.6
+cryptography==45.0.5
+dnspython==2.7.0
+ecdsa==0.19.1
+email_validator==2.2.0
+fastapi==0.104.1
+greenlet==3.2.3
+h11==0.16.0
+httpcore==1.0.9
+httptools==0.6.4
+httpx==0.25.2
+idna==3.10
+iniconfig==2.1.0
+Mako==1.3.10
+MarkupSafe==3.0.2
+packaging==25.0
+passlib==1.7.4
+pluggy==1.6.0
+pyasn1==0.6.1
+pycparser==2.22
+pydantic==2.11.7
+pydantic_core==2.33.2
+pytest==7.4.3
+pytest-asyncio==0.21.1
+python-dotenv==1.0.0
+python-jose==3.3.0
+python-multipart==0.0.6
+PyYAML==6.0.2
+rsa==4.9.1
+six==1.17.0
+sniffio==1.3.1
+SQLAlchemy==2.0.36
+starlette==0.27.0
+typing-inspection==0.4.1
+typing_extensions==4.14.1
+uvicorn==0.24.0
+watchfiles==1.1.0
+websockets==15.0.1
+
+# Editable local modules (correct SSH format)
+-e git+ssh://git@github.com/bheemdevhub/Bheem_Accounting.git@7c92b119b2471ed915376bb7f0bc79b78d42e4b3#egg=bheem_accounting
+-e git+ssh://git@github.com/bheemdevhub/Bheem_Auth.git@f0c592867b5982d2ffc6289242d72ef95a339569#egg=bheem_auth
+-e git+ssh://git@github.com/bheemdevhub/Bheem_Crm.git@87b8b0ca8485d722437c2a43aaa90c1f995c0d25#egg=bheem_crm
+-e git+ssh://git@github.com/bheemdevhub/Bheem_Inventory.git@ec91cb949016d4b168f1d41c4ec29d3fc07dc737#egg=bheem_inventory
+-e git+ssh://git@github.com/bheemdevhub/Bheem_Menu.git@8695c8ef14c1ceeac8eb5de021a210525d57d18c#egg=bheem_menu
+-e git+ssh://git@github.com/bheemdevhub/Bheem_Project_Management.git@8957fb6a925c022bddf70d6beb5bead9b77d42b9#egg=bheem_project_management
+-e git+ssh://git@github.com/bheemdevhub/Bheem_Purchase.git@053c767d0da46d8ef3041d6f80a4e644a8af04d8#egg=bheem_purchase
+-e git+ssh://git@github.com/bheemdevhub/Bheem_Sales.git@ca5d98062eceab9742afb2e97f532f7a6866cbac#egg=bheem_sales
+-e git+ssh://git@github.com/bheemdevhub/Bheem_Sku.git@efb99af5113eab52453de4752722032f7de25ed9#egg=bheem_sku
+-e git+ssh://git@github.com/bheemdevhub/Bheem_Core.git@45cd5785a6cb3ef5f20b93898c792c727ef9e3bd#egg=bheem_core
+-e git+ssh://git@github.com/bheemdevhub/Bheem_Hr.git@b5098720c073463f93763c62b66b6aa974044a18#egg=bheem_hr
+
